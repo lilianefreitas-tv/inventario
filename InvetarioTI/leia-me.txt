@@ -1,1 +1,3 @@
-
+Para criar o banco de dados, utilize o mesmo nome 'invetariobd'
+Lembre-se que é necessário ter user/senha no Banco de Dados (altere se necessário no arquivo src/conexao.php)
+Para Criar as tabelas, basta copiar os dados do arquivo invetariobd.sql
