@@ -1,7 +1,7 @@
 # Sistema de Inventário
 Sistema para gerenciamento de equipamentos de informática do MP
 
-> Status do Projeto: :construction: Projeto em construção :construction:
+> Status do Projeto: :white_check_mark: Projeto em Uso :white_check_mark:
 > <p align="justify"><b>Objetivo do sistema:</b> gerenciar os equipamentos de informática.
 ><p align="justify">A ideia de desenvolvimento do sistema surgiu da necessidade de ter um monitoriamento sobre os equipamentos de informática, bem como histórico das manutenções realizadas nestes equipamentos.
 >Então a partir de análise das planilhas que eram utilizadas no controle, foi possível desenvolver um sistema Web Local que permitirá realizar toda essa gerência.
