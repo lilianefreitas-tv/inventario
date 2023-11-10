@@ -151,7 +151,7 @@
 						
 						<div class="col-md-4 mb-3">
 							<label for="mac">MAC</label>
-							<input type="text" class="form-control" id="mac" placeholder="" readonly name="mac" value="<?php echo $mac  ?>" >
+							<input type="text" class="form-control" id="mac" placeholder=""  name="mac" value="<?php echo $mac  ?>" >
 							
 						</div>
 						<div class="col-md-3 mb-3">
@@ -165,19 +165,19 @@
 						
 						<div class="form-group col-md-6 mb-3">
 							<label for="configuracao">Configuração</label>
-							<textarea class="form-control" id="configuracao" name="configuracao" rows="4"> <?php  echo $configuracao ?>  </textarea>
+							<textarea class="form-control" id="configuracao" name="configuracao" rows="4"><?php echo $configuracao ?>  </textarea>
 							
 						</div>
 						
 						<div class="form-group col-md-6 mb-3">
 							<label for="manutencao">Manutenção</label>
-							<textarea class="form-control" id="manutencao" name="manutencao" rows="4" > <?php  echo $manutencao ?> </textarea>
+							<textarea class="form-control" id="manutencao" name="manutencao" rows="4" ><?php echo $manutencao ?> </textarea>
 							
 						</div>
 						
 						<div class="form-group col-md-12 mb-3">
 							<label for="obs">OBS</label>
-							<textarea class="form-control" id="obs" name="obs" rows="2" > <?php  echo $obs ?></textarea>
+							<textarea class="form-control" id="obs" name="obs" rows="2" ><?php echo $obs ?></textarea>
 							
 						</div>
 						

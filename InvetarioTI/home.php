@@ -33,6 +33,7 @@
 						<a class="nav-link dropdown-toggle" href="home.php" id="dropdownconsulta"  data-toggle="dropdown" > Consultas</a>
 						<div class="dropdown-menu" aria-labelledby ="dropdownconsulta">
 							<a class="dropdown-item" href="ConsultaInventario.php">Consulta  de Inventário</a>
+							<a class="dropdown-item" href="ConsultaBaixados.php">Consulta  de Baixa de Patrimônios</a>
 							<a class="dropdown-item" href="relatorios.php">Relatórios</a>
 							<a class="dropdown-item" href="ConsultaUsuario.php">Usuários</a>
 							<hr class="mb-2">

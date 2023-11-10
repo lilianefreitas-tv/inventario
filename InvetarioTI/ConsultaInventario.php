@@ -3,9 +3,10 @@
 	
     if (!empty($_GET['search'])) {
         $data = $_GET['search'];
-        $sql = "SELECT * FROM material WHERE id_material LIKE '%$data%' or patrimonio LIKE '%$data%' or local LIKE '%$data%' or tipo LIKE '%$data%' or cidade LIKE '%$data%' or ip LIKE '%$data%'";
+        $sql = "SELECT * FROM material WHERE id_material LIKE '%$data%' or patrimonio LIKE '%$data%' or local LIKE '%$data%' or tipo LIKE '%$data%' or cidade LIKE '%$data%' or ip LIKE '%$data%' or marca LIKE '%$data%'";
 		} else {
-        $sql = "SELECT * FROM material ORDER BY id_material ASC";
+		
+		$sql = "SELECT * FROM material  WHERE status NOT IN ('inativo') ORDER BY data DESC";
 	}
 	
     $result = $conexao->query($sql);
@@ -35,7 +36,7 @@
 		
 		<h3 align="center">Consulta de Inventário</h3>
 		
-		<div class="container col-md-10 order-md-1">
+		<div class="container col-md-12 order-md-1">
 			
 			<div class="box-search">
 				<input type="search" class="form-control w-25" placeholder="Pesquisar" id="pesquisar">
@@ -50,13 +51,13 @@
 				<thead>
 					<tr>
 						<th scope="col" class="col-1">Patrimônio</th>
-						<th scope="col" class="col-2">Tipo</th>
+						<th scope="col" class="col-1">Tipo</th>
 						<th scope="col" class="col-1">Marca</th>
 						<th scope="col" class="col-2">Descrição/Modelo</th>
-						<th scope="col" class="col-1">Cidade</th>
-						<th scope="col" class="col-1">Localização</th>
-						<th scope="col" class="col-2">IP</th>
-						<th scope="col" class="col-1">Ações</th>
+						<th scope="col" class="col-2">Cidade</th>
+						<th scope="col" class="col-2">Localização</th>
+						<th scope="col" class="col-1">IP</th>
+						<th scope="col" class="col-2">Ações</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -74,7 +75,7 @@
 								echo "<td>".$user_data['ip']."</td>";
 								echo "<td>
 								
-								<button type='button' class='btn btn-sm btn-info' data-toggle='modal' data-target='#modalExemplo".$user_data['id_material']."' >
+								<button type='button' title='Detalhes' class='btn btn-sm btn-info' data-toggle='modal' data-target='#modalExemplo".$user_data['id_material']."' >
 								<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
 								<path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/>
 								</svg>
@@ -84,9 +85,18 @@
 								<path d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'/>
 								</svg>
 								</a> 
+								<a class='btn btn-sm btn-warning' href='baixaInventario.php?id=$user_data[id_material]' title='Inativar Patrimônio'>
+								<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-bag-x' viewBox='0 0 16 16'>
+								<path fill-rule='evenodd' d='M6.146 8.146a.5.5 0 0 1 .708 0L8 9.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 10l1.147 1.146a.5.5 0 0 1-.708.708L8 10.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 10 6.146 8.854a.5.5 0 0 1 0-.708z'/>
+								<path d='M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z'/>
+								</svg>
+								</a>
+								
+								
 								<a class='btn btn-sm btn-danger' href='deleteInventario.php?id=$user_data[id_material]' title='Deletar'>
-								<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
-								<path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/>
+								<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
+								<path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z'/>
+								<path d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z'/>
 								</svg>
 								</a>
 								
@@ -171,62 +181,62 @@
 						}, false);
 					});
 				}, false);
-				})();
-				</script>
-				
-				<script>
-				var search = document.getElementById('pesquisar');
-				
-				search.addEventListener("keydown", function(event) {
+			})();
+		</script>
+		
+		<script>
+			var search = document.getElementById('pesquisar');
+			
+			search.addEventListener("keydown", function(event) {
 				if (event.key === "Enter") 
 				{
-				searchData();
+					searchData();
 				}
-				});
-				
-				function searchData()
-				{
+			});
+			
+			function searchData()
+			{
 				window.location = 'ConsultaInventario.php?search='+search.value;
-				}
-				</script>
-				
-				
-				
-				
-				<script>
-				function imprimir(){
+			}
+		</script>
+		
+		
+		
+		
+		<script>
+			function imprimir(){
 				const btnPrint=document.getElementById("btnPrint")
 				
 				btnPrint.addEventListener("click",(evt)=>{
-				const conteudo = document.getElementById('impressao').innerHTML;
-				
-				let estilo = "<style>";
-				
-				estilo += "table {width: 100%; font: 15px Arial;}";
-				estilo += "table,th,td{border: solid 2px #888; border-collapse: collapse;";
-				estilo += "padding: 4px 8px; text-align: center;}";
-				estilo += "</style>";
-				
-				
-				const win = window.open('','', 'height=700,width=700');
-				
-				
-				win.document.write ('<html><head>');
-				win.document.write ('<title>Impressão</title>');
-				win.document.write (estilo);
-				win.document.write ('</head>');
-				win.document.write ('<body>');
-				win.document.write (conteudo);
-				win.document.write ('</body></html>');
-				
-				win.print();
-				
-				
+					const conteudo = document.getElementById('impressao').innerHTML;
+					
+					let estilo = "<style>";
+					
+					estilo += "table {width: 100%; font: 15px Arial;}";
+					estilo += "table,th,td{border: solid 2px #888; border-collapse: collapse;";
+					estilo += "padding: 4px 8px; text-align: center;}";
+					estilo += "</style>";
+					
+					
+					const win = window.open('','', 'height=700,width=700');
+					
+					
+					win.document.write ('<html><head>');
+					win.document.write ('<title>Impressão</title>');
+					win.document.write (estilo);
+					win.document.write ('</head>');
+					win.document.write ('<body>');
+					win.document.write (conteudo);
+					win.document.write ('</body></html>');
+					
+					win.print();
+					
+					
 				})}
 				
 				
-				</script>
-				
-				
-				</body>
-				</html>										
+		</script>
+		
+		
+	</body>
+</html>																											

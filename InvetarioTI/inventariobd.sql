@@ -33,7 +33,18 @@ CREATE TABLE `cidade` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Despejando dados para a tabela `cidade`
+--
 
+INSERT INTO `cidade` (`id_cidade`, `descricao`) VALUES
+(1, 'Altamira'),
+(2, 'Medicilândia'),
+(3, 'Porto de Moz'),
+(4, 'Brasil Novo'),
+(5, 'Anapu'),
+(6, 'Senador José Porfírio'),
+(7, 'Uruará'),
+(8, 'Vitória do Xingú');
 
 -- --------------------------------------------------------
 
@@ -47,7 +58,23 @@ CREATE TABLE `localizacao` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Despejando dados para a tabela `localizacao`
+--
 
+INSERT INTO `localizacao` (`id_local`, `descricao`) VALUES
+(1, 'CPD'),
+(2, 'Auditório'),
+(3, '1ª PJ'),
+(4, '2ª PJ'),
+(5, '3ª PJ'),
+(6, '4ª PJ'),
+(7, '5ª PJ'),
+(8, '6ª PJ'),
+(9, '7ª PJ'),
+(10, '8ª PJ'),
+(11, 'Coordenação'),
+(12, 'Sala de Reunião 01'),
+(13, 'Sala de Reunião 02');
 
 -- --------------------------------------------------------
 
@@ -90,11 +117,16 @@ CREATE TABLE `material` (
   `ip` varchar(20) NOT NULL,
   `obs` varchar(150) NOT NULL,
   `cidade` varchar(50) NOT NULL
-   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Despejando dados para a tabela `material`
+--
 
+INSERT INTO `material` (`id_material`, `data`, `descricao`, `tipo`, `patrimonio`, `local`, `marca`, `configuracao`, `manutencao`, `mac`, `ip`, `obs`, `cidade`) VALUES
+(1, '2023-10-26', 'ECOSYS M3655idn', ' Impressora', '000000', ' 6ª PJ', ' KYOCERA', '', 'Nome do host: KMEBE336', '00:17:C8:EB:E3:36', '192.168.72.41', 'User/Senha: Admin/Admin', ' Altamira'),
+(2, '2023-10-26', 'ECOSYS M3655idn', ' Impressora', '000000', ' 3ª PJ', ' KYOCERA', '', 'Nome do Host: KMEBE0CC', '00:17:C8:EB:E0:CC', '192.168.72.42', 'User/Senha: Admin/Admin _ Apoio 3ªPJ', ' Altamira'),
+(3, '2023-10-26', 'ECOSYS M3655idn', ' Impressora', '000000', ' Coordenação', ' KYOCERA', '', 'Nome do Host: KMEBE207', '00:17:C8:EB:E2:07', '192.168.72.43', 'User/Senha: Admin/Admin', ' Altamira');
 
 -- --------------------------------------------------------
 
@@ -134,6 +166,11 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Despejando dados para a tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `nome`, `email`, `senha`) VALUES
+(1, 'Liliane de Freitas Terra Vieira', 'lilianefreitas@mppa.mp.br', '5454263@Mp');
 
 --
 -- Índices para tabelas despejadas
@@ -183,13 +220,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `cidade`
 --
 ALTER TABLE `cidade`
-  MODIFY `id_cidade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_cidade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `localizacao`
 --
 ALTER TABLE `localizacao`
-  MODIFY `id_local` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_local` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `marca`
@@ -201,19 +238,19 @@ ALTER TABLE `marca`
 -- AUTO_INCREMENT de tabela `material`
 --
 ALTER TABLE `material`
-  MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `tipo`
 --
 ALTER TABLE `tipo`
-  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
